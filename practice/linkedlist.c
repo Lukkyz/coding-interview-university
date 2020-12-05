@@ -30,10 +30,9 @@ int main() {
   struct LinkedList linkedList;
   linkedList.head = NULL;
   linkedList.tail = NULL;
-  push_front(&linkedList, 100);
-  push_front(&linkedList, 200);
   push_front(&linkedList, 300);
-  show(&linkedList);
+  printf("%i", linkedList.head->value);
+  printf("%i", linkedList.tail->value);
   return 0;
 }
 
