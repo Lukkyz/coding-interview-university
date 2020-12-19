@@ -1,44 +1,16 @@
+#include "linkedlist.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node {
-  int value;
-  struct Node *next;
-};
-
-struct LinkedList {
-  struct Node *head;
-  struct Node *tail;
-};
-
-int size(struct LinkedList *list);
-int empty(struct LinkedList *list);
-int value_at(struct LinkedList *list, int index);
-void push_front(struct LinkedList *list, int value);
-int pop_front(struct LinkedList *list);
-int front(struct LinkedList *list);
-int back(struct LinkedList *list);
-void insert(struct LinkedList *list, int index, int value);
-void show(struct LinkedList *list);
-void erase(struct LinkedList *list, int index);
-int value_n_from_end(struct LinkedList *list, int index);
-void push_back(struct LinkedList *list, int value);
-int pop_back(struct LinkedList *list);
-
-int main() {
-  struct LinkedList linkedList;
-  linkedList.head = NULL;
-  linkedList.tail = NULL;
-  push_front(&linkedList, 300);
-  printf("%i", linkedList.head->value);
-  printf("%i", linkedList.tail->value);
-  return 0;
-}
-
 void push_back(struct LinkedList *list, int value) {
   struct Node *new_node = malloc(sizeof(struct Node));
   new_node->value = value;
+  if (list->head == NULL) {
+    list->head = new_node;
+    list->tail = new_node;
+    return;
+  }
   list->tail->next = new_node;
   list->tail = list->tail->next;
 }
